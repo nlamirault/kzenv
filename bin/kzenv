@@ -40,12 +40,12 @@ abort() {
 command="${1}"
 case "${command}" in
   "" )
-    { kzenv---version
+    { kzenv--version
       kzenv-help
     } | abort
     ;;
   -v | --version )
-    exec kzenv---version
+    exec kzenv--version
     ;;
     -h | --help )
     exec kzenv-help
