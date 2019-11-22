@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+#
+# Summary: Run an executable with the selected Kustomize version
+#
+# Usage: kzenv exec <command> [arg1 arg2...]
+#
+# Runs an executable by first preparing PATH so that the selected Kustomize
+# version's `bin' directory is at the front.
+#
+# For example, if the currently selected Kustomize version is 3.0.0:
+#   kzenv exec build
+#
+# is equivalent to:
+#   PATH="$KZENV_ROOT/versions/3.0.0/bin:$PATH" kustomize build
+
+set -e
+[ -n "${KZENV_DEBUG}" ] && set -x
+
+export KZENV_VERSION="$(kzenv-version-name)"
+KZ_BIN_PATH="${KZENV_ROOT}/versions/${KZENV_VERSION}/kustomize"
+export PATH="${KZ_BIN_PATH}:${PATH}"
+exec "${KZ_BIN_PATH}" "${@}"

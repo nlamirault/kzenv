@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+[ -n "${KZENV_DEBUG}" ] && set -x
+source "${KZENV_ROOT}/libexec/helpers"
+
+[ "${#}" -ne 0 ] \
+  && error_and_die "usage: kzenv list"
+
+[ -d "${KZENV_ROOT}/versions" ] \
+  || error_and_die "No versions available. Please install one with: kzenv install"
+
+[[ -x "${KZENV_ROOT}/versions" && -r "${KZENV_ROOT}/versions" ]] \
+  || error_and_die "kzenv versions directory is inaccessible!"
+
+print_version () {
+    if [ "${1}" == "$(kzenv-version-name)" ]; then
+        echo "* ${1} (set by $(kzenv-version-file))"
+    else
+        echo "  ${1}"
+    fi
+}
+
+for local_version in $(ls -1 "${KZENV_ROOT}/versions" | sort -t'.' -k 1nr,1 -k 2nr,2 -k 3nr,3); do
+    print_version "${local_version}"
+done

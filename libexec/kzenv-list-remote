@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+set -e
+[ -n "${KZENV_DEBUG}" ] && set -x
+source "${KZENV_ROOT}/libexec/helpers"
+
+if [ "${#}" -ne 0 ];then
+  echo "usage: kzenv list-remote" 1>&2
+  exit 1
+fi
+
+# echo ${KZENV_REMOTE_API}
+curlw -sf "${KZENV_REMOTE_API}"| \
+  grep browser_download| \
+  grep linux| \
+  cut -d '"' -f 4| \
+  grep "/kustomize"| \
+  grep -v pluginator| \
+  grep -v api| \
+  grep -v pseudo| \
+  grep -o -E "[0-9]+\.[0-9]+\.[0-9]+"
+

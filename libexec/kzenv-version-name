@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+# Summary: Show the current Kustomize version
+set -e
+
+[ -n "${KZENV_DEBUG}" ] && set -x
+source "${KZENV_ROOT}/libexec/helpers"
+
+[ -d "${KZENV_ROOT}/versions" ] \
+  || error_and_die "No versions of kustomize installed. Please install one with: kzenv install"
+
+KZENV_VERSION_FILE="$(kzenv-version-file)"
+KZENV_VERSION="$(cat "${KZENV_VERSION_FILE}" || true)"
+
+if [[ "${KZENV_VERSION}" =~ ^latest.*$ ]]; then
+  [[ "${KZENV_VERSION}" =~ ^latest\:.*$ ]] && regex="${KZENV_VERSION##*\:}"
+  version="$(\ls "${KZENV_ROOT}/versions" \
+    | sort -t'.' -k 1nr,1 -k 2nr,2 -k 3nr,3 \
+    | grep -e "${regex}" \
+    | head -n 1
+  )"
+  [ -n "${version}" ] || error_and_die "No installed versions of kustomize matched '${KZENV_VERSION}'"
+  KZENV_VERSION="${version}"
+fi
+
+[ -z "${KZENV_VERSION}" ] \
+  && error_and_die "Version could not be resolved (set by ${KZENV_VERSION_FILE} or kzenv use <version>)"
+
+version_exists() {
+  local version="${1}"
+  [ -d "${KZENV_ROOT}/versions/${version}" ]
+}
+
+if version_exists "${KZENV_VERSION}"; then
+  echo "${KZENV_VERSION}"
+else
+  error_and_die "version '${KZENV_VERSION}' is not installed (set by ${KZENV_VERSION_FILE})"
+fi

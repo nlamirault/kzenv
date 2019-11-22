@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+set -e
+[ -n "${KZENV_DEBUG}" ] && set -x
+
+program="${0##*/}"
+exec "$(dirname "$(command -v "${0}")")/kzenv" exec "${@}"
