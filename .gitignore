@@ -1,0 +1,11 @@
+.*.swp
+.vscode
+
+versions/
+version
+.kustomize-version
+bin/kustomize-*
+
+kzenv-*
+kzenv-v*.tar.gz
+kzenv-v*.zip

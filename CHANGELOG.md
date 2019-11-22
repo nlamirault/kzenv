@@ -1,3 +1,3 @@
-## 0.1.0 (xx/xx/2019)
+# 0.1.0 (11/22/2019)
 
- * Init project
+* Init project
