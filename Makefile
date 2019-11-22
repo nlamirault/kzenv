@@ -14,7 +14,7 @@
 
 APP = kzenv
 
-VERSION = 0.2.0
+VERSION = 0.2.1
 
 SHELL = /bin/bash -o pipefail
 
@@ -54,6 +54,10 @@ check-%:
 
 .PHONY: check
 check: check-bash ## Check requirements
+
+.PHONY: clean
+clean: ## Cleanup environment
+	rm -fr rm kzenv-*
 
 .PHONY: test
 test: ## Run tests
