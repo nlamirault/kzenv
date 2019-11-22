@@ -1,0 +1,5 @@
+versions/
+version
+.kustomize-version
+bin/kustomize-*
+.*.swp
