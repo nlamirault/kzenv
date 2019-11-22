@@ -7,9 +7,19 @@
 Currently kzenv supports the following OSes
 
 - [x] Linux (64bit)
-- [ ] Mac OS X (64bit)
+- [x] Mac OS X (64bit)
 
 ## Installation
+
+### Automatic
+
+Install via Homebrew
+
+  ```console
+  $ brew install kzenv
+  ```
+
+### Manual
 
 On any other platform, you can install kzenv as follows:
 
