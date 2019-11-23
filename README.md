@@ -20,6 +20,22 @@ $ wget https://github.com/nlamirault/kzenv/releases/download/v0.3.0/kzenv-0.3.0-
 $ sudo pacman -U kzenv-0.3.0-3-x86_64.pkg.tar.xz
 ```
 
+For OSX users :
+
+Installing the tap will provide access to software via Homebrew:
+
+```console
+$ brew tap nlamirault/kzenv https://github.com/nlamirault/kzenv/
+```
+
+Installing individual software tools can then be done as follows:
+
+```console
+$ brew install kzenv
+```
+
+### Manual
+
 On any other platform, you can install kzenv as follows:
 
 1. Check out kzenv into any path (here is `${HOME}/.kzenv`)
