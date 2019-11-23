@@ -1,0 +1,34 @@
+# Original Maintainer: Nicolas Lamirault <nicolas.lamirault@gmail.com>
+pkgname=kzenv
+pkgver=0.3.0
+pkgrel=3
+epoch=
+pkgdesc="Kustomize version manager inspired by tfenv"
+arch=("x86_64")
+url="https://github.com/nlamirault/kzenv"
+license=('MIT')
+groups=()
+depends=()
+makedepends=()
+checkdepends=()
+optdepends=()
+provides=("kzenv")
+source=("https://github.com/nlamirault/kzenv/releases/download/v${pkgver}/kzenv-v${pkgver}.tar.gz")
+validpgpkeys=()
+
+package() {
+	cd "${srcdir}/${pkgname}-${pkgver}"
+	mkdir -p "${pkgdir}/usr/local/bin"
+	mkdir -p "${pkgdir}/usr/local/lib/kzenv/libexec"
+	echo $srcdir
+	ls -lah
+	sed -i 's:KZENV_ROOT="$(cd "$(dirname "$(readlink_f "${0}")")/.." \&\& pwd)":KZENV_ROOT="$(cd "$(dirname "$(readlink_f "${0}")")/../lib/kzenv" \&\& pwd)":' bin/kzenv
+	install -m755 "bin/${pkgname}" "${pkgdir}/usr/local/bin/${pkgname}"
+	install -m755 "bin/kustomize" "${pkgdir}/usr/local/bin/kustomize"
+	for i in `ls ${srcdir}/${pkgname}-${pkgver}/libexec/`; do
+		install -m755 "${srcdir}/${pkgname}-${pkgver}/libexec/$i" "${pkgdir}/usr/local/lib/kzenv/libexec/$i"
+	done
+	chmod +x ${pkgdir}/usr/local/bin/${pkgname}
+	install -m644 "${srcdir}/${pkgname}-${pkgver}/CHANGELOG.md" "${pkgdir}/usr/local/lib/kzenv/"
+}
+sha256sums=(e7afb1dced98fb5470437b34045d49a32f0364b4508eb775970591a9cb66adf4)
