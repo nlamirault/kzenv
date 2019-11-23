@@ -11,6 +11,15 @@ Currently kzenv supports the following OSes
 
 ## Installation
 
+### Automatic
+
+For Archlinux users :
+
+```console
+$ wget https://github.com/nlamirault/kzenv/releases/download/v0.3.0/kzenv-0.3.0-3-x86_64.pkg.tar.xz
+$ sudo pacman -U kzenv-0.3.0-3-x86_64.pkg.tar.xz
+```
+
 On any other platform, you can install kzenv as follows:
 
 1. Check out kzenv into any path (here is `${HOME}/.kzenv`)

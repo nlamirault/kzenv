@@ -78,3 +78,9 @@ dist: ## Create a distribution
 	@for f in $(APP)-v$(VERSION).{tar.gz,zip} ; do \
 		sha256sum "$${f}"  | awk '{print $$1}' > "$${f}.sha256" ; \
 	done
+
+.PHONY: pkg-archlinux
+pkg-archlinux: ## Create Archlinux package
+	@cd packaging/archlinux \
+		&& makepkg \
+		&& mv kzenv-*-x86_64.pkg.tar.xz ../../
