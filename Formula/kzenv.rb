@@ -15,13 +15,13 @@
 class Kzenv < Formula
   desc "Kustomize version manager inspired by kzenv"
   homepage "https://github.com/nlamirault/kzenv"
-  url "https://github.com/nlamirault/kzenv/archive/v0.3.0.tar.gz"
-  sha256 "e7afb1dced98fb5470437b34045d49a32f0364b4508eb775970591a9cb66adf4"
+  url "https://github.com/nlamirault/kzenv/archive/v0.5.0.tar.gz"
+  sha256 "1000d0ff2ad8eb35e0fda5fabfed0654d198ea6432aaad467fa2938fe2ad1c2b"
   head "https://github.com/nlamirault/kzenv.git"
 
   bottle :unneeded
 
-  conflicts_with "kustomize", :because => "kustomize symlinks terraform binaries"
+  conflicts_with "kustomize", :because => "kzenv symlinks kustomize binaries"
 
   def install
     prefix.install ["bin", "libexec"]
