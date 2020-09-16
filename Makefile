@@ -14,7 +14,7 @@
 
 APP = kzenv
 
-VERSION = 1.0.0
+VERSION = 1.1.0
 
 SHELL = /bin/bash -o pipefail
 
