@@ -11,10 +11,6 @@ if [ "${#}" -ne 0 ];then
 fi
 
 
-function rest_call {
-    curlw -s $1
-}
-
 function github_extract {
   local url=$1
   curlw -sf ${url} | \
