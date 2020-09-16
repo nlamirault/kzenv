@@ -72,6 +72,11 @@ On any other platform, you can install kzenv as follows:
   $ command -v kzenv
   ```
 
+## Github API
+
+`kzenv` use Github API to check releases. You could set the `GITHUB_API_TOKEN`
+environment variable to use the authenticated API
+
 ## Usage
 
 ### kzenv install [version]
