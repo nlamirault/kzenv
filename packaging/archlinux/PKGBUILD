@@ -1,4 +1,4 @@
-# Copyright (C) 2019 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+# Copyright (C) 2019-2020 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -15,7 +15,7 @@
 # Original Maintainer: Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 pkgname=kzenv
-pkgver=0.5.0
+pkgver=1.0.0
 pkgrel=1
 epoch=
 pkgdesc="Kustomize version manager inspired by tfenv"
@@ -46,4 +46,4 @@ package() {
 	chmod +x ${pkgdir}/usr/local/bin/${pkgname}
 	install -m644 "${srcdir}/${pkgname}-${pkgver}/CHANGELOG.md" "${pkgdir}/usr/local/lib/kzenv/"
 }
-sha256sums=(1000d0ff2ad8eb35e0fda5fabfed0654d198ea6432aaad467fa2938fe2ad1c2b)
+sha256sums=(635746abcd679529d15af8191790e5e2af035f153fe63551375c6316a1624b5a)

@@ -1,4 +1,4 @@
-# Copyright (C) 2019 Nicolas Lamirault <nicolas.lamirault@gmail.com>
+# Copyright (C) 2019-2020 Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
 
 APP = kzenv
 
-VERSION = 0.5.0
+VERSION = 1.0.0
 
 SHELL = /bin/bash -o pipefail
 
