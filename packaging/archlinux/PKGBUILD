@@ -46,4 +46,4 @@ package() {
 	chmod +x ${pkgdir}/usr/local/bin/${pkgname}
 	install -m644 "${srcdir}/${pkgname}-${pkgver}/CHANGELOG.md" "${pkgdir}/usr/local/lib/kzenv/"
 }
-sha256sums=(635746abcd679529d15af8191790e5e2af035f153fe63551375c6316a1624b5a)
+sha256sums=(35fc6cd17e06b37233d458fddc3ecaed99129606b555d0be7b7c3481caf30831)
