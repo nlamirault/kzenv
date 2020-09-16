@@ -34,12 +34,12 @@ last_page=`curl -s -I "${KZENV_REMOTE_API}" | grep '^link:' | sed -e 's/^link:.*
 # does this result use pagination?
 if [ -z "$last_page" ]; then
     # no - this result has only one page
-    echo "Only one page: ${KZENV_REMOTE_API}"
+    # echo "Only one page: ${KZENV_REMOTE_API}"
     github_extract "${KZENV_REMOTE_API}"
 else
     # yes - this result is on multiple pages
     for p in `seq 1 $last_page`; do
-      echo "Page: ${p}"
+      # echo "Page: ${p}"
       github_extract "${KZENV_REMOTE_API}?page=$p"
     done
 fi
