@@ -82,5 +82,6 @@ dist: ## Create a distribution
 .PHONY: pkg-archlinux
 pkg-archlinux: ## Create Archlinux package
 	@cd packaging/archlinux \
-		&& makepkg \
-		&& mv kzenv-*-x86_64.pkg.tar.xz ../../
+		&& makepkg -f \
+		&& mv kzenv-$(VERSION)*.tar.zst ../../
+		# kzenv-*-x86_64.pkg.tar.xz ../../

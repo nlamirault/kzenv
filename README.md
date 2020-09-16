@@ -16,8 +16,8 @@ Currently kzenv supports the following OSes
 For Archlinux users :
 
 ```console
-$ wget https://github.com/nlamirault/kzenv/releases/download/v0.3.0/kzenv-0.3.0-3-x86_64.pkg.tar.xz
-$ sudo pacman -U kzenv-0.3.0-3-x86_64.pkg.tar.xz
+$ wget https://github.com/nlamirault/kzenv/releases/download/v1.0.0/kzenv-1.0.0-1-x86_64.pkg.tar.zst
+$ sudo pacman -U kzenv-1.0.0-1-x86_64.pkg.tar.zst
 ```
 
 For OSX users :
