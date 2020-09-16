@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 set -e
+
 [ -n "${KZENV_DEBUG}" ] && set -x
 source "${KZENV_ROOT}/libexec/helpers"
 
@@ -9,15 +10,32 @@ if [ "${#}" -ne 0 ];then
   exit 1
 fi
 
-# echo ${KZENV_REMOTE_API}
-curlw -sf "${KZENV_REMOTE_API}"| \
-  grep browser_download| \
-  grep linux| \
-  cut -d '"' -f 4| \
-  grep "/kustomize"| \
-  grep -v pluginator| \
-  grep -v api| \
-  grep -v pseudo| \
-  grep -o -E "[0-9]+\.[0-9]+\.[0-9]+" |
-  uniq
-echo -e "2.0.3\n2.0.2\n2.0.1\n2.0.0\n1.0.11\n1.0.10\n1.0.9\n1.0.8\n1.0.7\n1.0.6\n1.0.5\n1.0.4\n1.0.3\n1.0.2\n1.0.1"
+
+function github_extract {
+  local url=$1
+  curlw -sf ${url} | \
+    grep browser_download| \
+    grep linux| \
+    cut -d '"' -f 4| \
+    grep "/kustomize"| \
+    grep -v pluginator| \
+    grep -v api| \
+    grep -v pseudo| \
+    grep -o -E "[0-9]+\.[0-9]+\.[0-9]+" |
+    uniq
+}
+
+last_page=`curl -s -I "${KZENV_REMOTE_API}" | grep '^link:' | sed -e 's/^link:.*page=//g' -e 's/>.*$//g'`
+
+# does this result use pagination?
+if [ -z "$last_page" ]; then
+    # no - this result has only one page
+    # echo "Only one page: ${KZENV_REMOTE_API}"
+    github_extract "${KZENV_REMOTE_API}"
+else
+    # yes - this result is on multiple pages
+    for p in `seq 1 $last_page`; do
+      # echo "Page: ${p}"
+      github_extract "${KZENV_REMOTE_API}?page=$p"
+    done
+fi
