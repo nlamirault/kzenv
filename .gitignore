@@ -6,6 +6,6 @@ version
 .kustomize-version
 bin/kustomize-*
 
-kzenv-*
 kzenv-v*.tar.gz
 kzenv-v*.zip
+kzenv-*.pkg.tar.*
