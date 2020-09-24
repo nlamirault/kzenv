@@ -16,6 +16,8 @@ APP = kzenv
 
 VERSION = 1.1.0
 
+GITHUB_API_TOKEN ?=
+
 SHELL = /bin/bash -o pipefail
 
 DIR = $(shell pwd)
