@@ -20,4 +20,5 @@ jobs:
       - name: kzenv-test
         run: make test
         env:
+          KZENV_DEBUG: true
           GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
