@@ -14,7 +14,7 @@
 
 APP = kzenv
 
-VERSION = 1.1.0
+VERSION = 1.2.0
 
 GITHUB_API_TOKEN ?=
 
