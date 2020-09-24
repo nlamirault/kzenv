@@ -15,7 +15,7 @@
 # Original Maintainer: Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 pkgname=kzenv
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 epoch=
 pkgdesc="Kustomize version manager inspired by tfenv"
@@ -46,4 +46,4 @@ package() {
 	chmod +x ${pkgdir}/usr/local/bin/${pkgname}
 	install -m644 "${srcdir}/${pkgname}-${pkgver}/CHANGELOG.md" "${pkgdir}/usr/local/lib/kzenv/"
 }
-sha256sums=(f2db0ac3441a4d1ea4b6edbf2cf99af36a60afd1f820d5eebf0511bbc705ba6e)
+sha256sums=(1bff9a171f4e71bde10541830c873b67b06bb6b4304970c4e5cf4f468aa03c89)
