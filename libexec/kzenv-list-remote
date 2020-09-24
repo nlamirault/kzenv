@@ -10,42 +10,35 @@ if [ "${#}" -ne 0 ];then
   exit 1
 fi
 
-
-function add_headers {
-
-  echo ${header}
-}
-
-function github_extract {
+function github_extract() {
   local url=$1
-  headers=add_headers
+  # info ${url}
+
+  cmd="curlw -sf"
   if [ -n "${GITHUB_API_TOKEN}" ]; then
-    request="${url} --header \"Authorization: token ${GITHUB_API_TOKEN}\""
-  else
-    request="${url}"
+    cmd="${cmd} -H 'Authorization: token ${GITHUB_API_TOKEN}'"
   fi
-  # echo ${request}
-  curlw -sf ${request} | \
-    grep browser_download| \
-    grep linux| \
-    cut -d '"' -f 4| \
-    grep "/kustomize"| \
-    grep -v -E 'pluginator|api|pseudo' | \
-    grep -o -E "[0-9]+\.[0-9]+\.[0-9]+" |
-    uniq
+  cmd="${cmd} ${url}"
+  versions=$(eval "$cmd"|grep browser_download|grep linux|cut -d '"' -f 4|grep "/kustomize"|grep -v -E "pluginator|api|pseudo"|grep -o -E "[0-9]+\.[0-9]+\.[0-9]+" |uniq)
+  echo -e ${versions} | tr ' ' '\n'
 }
 
-last_page=`curl -s -I "${KZENV_REMOTE_API}" | grep '^link:' | sed -e 's/^link:.*page=//g' -e 's/>.*$//g'`
+
+if [ -n "${GITHUB_API_TOKEN}" ]; then
+  info "Use Github API token"
+  last_page=$(curl -s -H "Authorization: token ${GITHUB_API_TOKEN}" -I ${KZENV_REMOTE_API} | grep '^Link:' | sed -e 's/^Link:.*page=//g' -e 's/>.*$//g')
+else
+  last_page=$(curl -s -I ${KZENV_REMOTE_API} | grep '^link:' | sed -e 's/^link:.*page=//g' -e 's/>.*$//g')
+fi
+# info ${last_page}
 
 # does this result use pagination?
 if [ -z "$last_page" ]; then
-    # no - this result has only one page
-    # echo "Only one page: ${KZENV_REMOTE_API}"
+    # info "Only one page: ${KZENV_REMOTE_API}"
     github_extract "${KZENV_REMOTE_API}"
 else
-    # yes - this result is on multiple pages
     for p in `seq 1 $last_page`; do
-      # echo "Page: ${p}"
+      # info "Page: ${p}"
       github_extract "${KZENV_REMOTE_API}?page=$p"
     done
 fi

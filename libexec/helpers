@@ -25,6 +25,6 @@ function curlw () {
     TLS_OPT=""
   fi
 
-  echo "$@"
+  # info ${TLS_OPT} "$@"
   curl ${TLS_OPT} "$@"
 }
