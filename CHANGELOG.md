@@ -1,6 +1,11 @@
 # ChangeLog
 
-## 1.1.0 (09/16/2020)
+## 1.2.0 (09/24/2020)
+
+- Add Github Actions
+- Refactoring kzenv version extraction
+
+## 1.1.0 (09/24/2020)
 
 - Possibility to use the authenticated API of Github
 
