@@ -21,11 +21,3 @@ jobs:
         run: make test
         env:
           GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-  lint:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v1
-      - name: Run ShellCheck
-        run: shellcheck bin/*
