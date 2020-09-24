@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+if [ -n "${GITHUB_API_TOKEN}" ]; then
+  echo "== Github API Authenticated =="
+fi
+
 if [ -n "${KZENV_DEBUG}" ]; then
   export PS4='+ [${BASH_SOURCE##*/}:${LINENO}] '
   set -x
