@@ -28,8 +28,9 @@ makedepends=()
 checkdepends=()
 optdepends=()
 provides=("kzenv")
-source=("https://github.com/nlamirault/kzenv/releases/download/v${pkgver}/kzenv-v${pkgver}.tar.gz")
+source=() #"https://github.com/nlamirault/kzenv/releases/download/v${pkgver}/kzenv-v${pkgver}.tar.gz")
 validpgpkeys=()
+sha256sums=(1bff9a171f4e71bde10541830c873b67b06bb6b4304970c4e5cf4f468aa03c89)
 
 package() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
@@ -46,4 +47,3 @@ package() {
 	chmod +x ${pkgdir}/usr/local/bin/${pkgname}
 	install -m644 "${srcdir}/${pkgname}-${pkgver}/CHANGELOG.md" "${pkgdir}/usr/local/lib/kzenv/"
 }
-sha256sums=(1bff9a171f4e71bde10541830c873b67b06bb6b4304970c4e5cf4f468aa03c89)
