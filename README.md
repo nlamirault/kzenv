@@ -1,5 +1,7 @@
 # kzenv
 
+[![GitHub Actions Status](https://github.com/nlamirault/kzenv/workflows/main/badge.svg?branch=master)](https://github.com/nlamirault/kzenv/actions)
+
 [Kustomize](https://www.kustomize.io/) version manager mainly inspired by [tfenv](https://github.com/tfutils/tfenv)
 
 ## Support
