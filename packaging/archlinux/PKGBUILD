@@ -15,7 +15,7 @@
 # Original Maintainer: Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 pkgname=kzenv
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 epoch=
 pkgdesc="Kustomize version manager inspired by tfenv"

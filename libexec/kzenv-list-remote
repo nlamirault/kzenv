@@ -12,9 +12,11 @@ fi
 
 function github_extract() {
   local url=$1
+  # Debug
   # info ${url}
 
   cmd="curlw -sf"
+  # info ${GITHUB_API_TOKEN}
   if [ -n "${GITHUB_API_TOKEN}" ]; then
     cmd="${cmd} -H 'Authorization: token ${GITHUB_API_TOKEN}'"
   fi
@@ -26,11 +28,11 @@ function github_extract() {
 
 if [ -n "${GITHUB_API_TOKEN}" ]; then
   info "Use Github API token"
-  last_page=$(curl -s -H "Authorization: token ${GITHUB_API_TOKEN}" -I ${KZENV_REMOTE_API} | grep '^Link:' | sed -e 's/^Link:.*page=//g' -e 's/>.*$//g')
+  last_page=$(curl -s -H "Authorization: token ${GITHUB_API_TOKEN}" -I ${KZENV_REMOTE_API} | grep '^link:' | sed -e 's/^link:.*page=//g' -e 's/>.*$//g')
 else
   last_page=$(curl -s -I ${KZENV_REMOTE_API} | grep '^link:' | sed -e 's/^link:.*page=//g' -e 's/>.*$//g')
 fi
-# info ${last_page}
+# info "Last page: ${last_page}"
 
 # does this result use pagination?
 if [ -z "$last_page" ]; then
