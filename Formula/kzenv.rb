@@ -15,8 +15,8 @@
 class Kzenv < Formula
   desc "Kustomize version manager inspired by kzenv"
   homepage "https://github.com/nlamirault/kzenv"
-  url "https://github.com/nlamirault/kzenv/archive/v1.0.0.tar.gz"
-  sha256 "0155ee38bbb1c42d6bc9dfc47aa09ef7e0c0c0cf1bbaf8a696ef08354a6d3232"
+  url "https://github.com/nlamirault/kzenv/archive/v1.3.0.tar.gz"
+  sha256 "eda73c5b19f818ea73499e753b6ad22d7dc6004f99899af58e3a86c75567cd7a"
   head "https://github.com/nlamirault/kzenv.git"
 
   bottle :unneeded
